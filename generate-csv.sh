@@ -19,7 +19,7 @@ cidrs_gcp=$(wget -qO- https://www.gstatic.com/ipranges/cloud.json | grep -o "$CI
 echo -n "GCP CIDRs: "
 echo "$cidrs_gcp" | wc -l
 
-cidrs_azure=$(wget -qO- $(wget -qO- -U Mozilla https://www.microsoft.com/en-us/download/details.aspx?id=56519 | grep -Eo 'https://download.microsoft.com/download/\S+?\.json' | head -n 1) | grep -o "$CIDR_REGEX" | sort -V )
+cidrs_azure=$(wget -qO- -U Mozilla https://download.microsoft.com/download/7/1/d/71d86715-5596-4529-9b13-da13a5de5b63/ServiceTags_Public_latest.json | grep -o "$CIDR_REGEX" | sort -V )
 echo -n "Azure CIDRs: "
 echo "$cidrs_azure" | wc -l
 
